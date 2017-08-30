@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace video_rental.Models
 {
@@ -9,7 +11,8 @@ namespace video_rental.Models
         public string MovieTitle {get; set;}
         public int YearReleased {get; set;}
         public string Director {get; set;}
-        [ForeignKey]
-        public int GenreID {get; set;}
+        public int GenresModelID {get; set;}
+
+        public GenresModel GenresModel { get; set; }
     }
 }
