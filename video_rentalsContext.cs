@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using video_rental.Models;
 
+
 namespace video_rental
 {
     public partial class video_rentalsContext : DbContext

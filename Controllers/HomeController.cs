@@ -8,8 +8,15 @@ using video_rental.Models;
 
 namespace video_rental.Controllers
 {
+    
     public class HomeController : Controller
     {
+        private readonly video_rentalsContext _context;
+
+        public HomeController(video_rentalsContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
