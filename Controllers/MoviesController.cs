@@ -48,7 +48,7 @@ namespace video_rental.Controllers
         // GET: Movie/Create
         public IActionResult Create()
         {
-            ViewData["GenresModelID"] = new SelectList(_context.Genres, "GenreID", "GenreID");
+            ViewData["GenresModelID"] = new SelectList(_context.Genres, "GenreID", "GenreName");
             return View();
         }
 
