@@ -11,9 +11,10 @@ using video_rental;
 namespace video_rental.Migrations
 {
     [DbContext(typeof(video_rentalsContext))]
-    partial class video_rentalsContextModelSnapshot : ModelSnapshot
+    [Migration("20170901175919_CustomersModel_mig")]
+    partial class CustomersModel_mig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

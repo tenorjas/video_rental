@@ -1,0 +1,54 @@
+@model video_rental.Models.RentalRecordsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RentalRecordsModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MovieID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MovieTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOverdue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsOverdue)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RentalID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

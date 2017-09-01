@@ -1,0 +1,57 @@
+@model video_rental.Models.RentalRecordsModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RentalRecordsModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MovieID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MovieTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DueDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DueDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsOverdue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsOverdue)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="RentalID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

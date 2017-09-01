@@ -1,0 +1,58 @@
+@model video_rental.Models.RentalRecordsModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>RentalRecordsModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="RentalID" />
+            <div class="form-group">
+                <label asp-for="CustomerID" class="control-label"></label>
+                <input asp-for="CustomerID" class="form-control" />
+                <span asp-validation-for="CustomerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieID" class="control-label"></label>
+                <input asp-for="MovieID" class="form-control" />
+                <span asp-validation-for="MovieID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieTitle" class="control-label"></label>
+                <input asp-for="MovieTitle" class="form-control" />
+                <span asp-validation-for="MovieTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DueDate" class="control-label"></label>
+                <input asp-for="DueDate" class="form-control" />
+                <span asp-validation-for="DueDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="IsOverdue" /> @Html.DisplayNameFor(model => model.IsOverdue)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
