@@ -11,9 +11,10 @@ using video_rental;
 namespace video_rental.Migrations
 {
     [DbContext(typeof(video_rentalsContext))]
-    partial class video_rentalsContextModelSnapshot : ModelSnapshot
+    [Migration("20170905213147_added IsCheckedOut flag")]
+    partial class addedIsCheckedOutflag
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

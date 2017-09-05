@@ -12,6 +12,7 @@ namespace video_rental.Models
         public int YearReleased {get; set;}
         public string Director {get; set;}
         public int GenresModelID {get; set;}
+        public bool IsCheckedOut {get; set;}
 
         public GenresModel GenresModel { get; set; }
     }

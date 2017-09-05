@@ -42,11 +42,10 @@
     {
         @Html.Hidden("MovieID")
 
-        // Turn this into a drop down showing all the customers
-        @Html.TextArea("CustomerID")
+        <select name="customerID" class ="form-control" asp-items="ViewBag.customers"></select>
 
         // Turn this into a date field
-        @Html.TextArea("DueDate")
+        <input name="DueDate" type="date"/>
 
         <input type="submit" name="Save" value="Save" />
     }

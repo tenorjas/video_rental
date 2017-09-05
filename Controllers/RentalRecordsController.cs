@@ -54,6 +54,9 @@ namespace video_rental.Controllers
             var moviesModel = await _context.Movies
                 .Include(m => m.GenresModel)
                 .SingleOrDefaultAsync(m => m.MovieID == id);
+
+            ViewData["customers"] = new SelectList(_context.Customers, "CustomerID", "CustomerName");
+
             if (moviesModel == null)
             {
                 return NotFound();
@@ -62,14 +65,6 @@ namespace video_rental.Controllers
             return View(moviesModel);
         }
 
-        // POST Check out movie
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        public async Task<IActionResult> CheckOutMovie(int movieId, int customerId)
-        {
-            throw new NotImplementedException();
-        }
 
         //GET: RentalRecords/Create
         public IActionResult Create()
@@ -77,16 +72,33 @@ namespace video_rental.Controllers
             return View();
         }
 
+        public async Task<IActionResult> CheckInMovie(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+             var moviesModel = await _context.Movies
+                .Include(m => m.GenresModel)
+                .SingleOrDefaultAsync(m => m.MovieID == id);
+            moviesModel.IsCheckedOut = false;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index","Movies");
+        }
+
         //POST: RentalRecords/Create
         //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RentalID,CustomerID,CustomerName,MovieID,MovieTitle,DueDate,IsOverdue")] RentalRecordsModel rentalRecordsModel)
+        public async Task<IActionResult> Create([Bind("CustomerID,MovieID,DueDate")] RentalRecordsModel rentalRecordsModel)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(rentalRecordsModel);
+                var movie = await _context.Movies.SingleOrDefaultAsync(s => s.MovieID == rentalRecordsModel.MovieID);
+                movie.IsCheckedOut = true;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

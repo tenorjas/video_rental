@@ -44,7 +44,14 @@
                 @Html.DisplayFor(modelItem => item.GenresModel.GenreName)
             </td>
             <td>
-                @Html.ActionLink("Check Out","CheckOutMovie","RentalRecords",new{@id=item.MovieID},null)
+                @if(!item.IsCheckedOut)
+                {
+                    <span>@Html.ActionLink("Check Out","CheckOutMovie","RentalRecords",new{@id=item.MovieID},null)</span>
+                }
+                else
+                {
+                    <span>@Html.ActionLink("Check In","CheckInMovie","RentalRecords",new{@id=item.MovieID},null)</span>
+                }
             </td>
             <td>
                 Ï<a asp-action="Edit" asp-route-id="@item.MovieID">Edit</a> |
