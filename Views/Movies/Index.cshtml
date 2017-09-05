@@ -24,6 +24,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.GenresModel)
             </th>
+            <th>Check Out</th>
             <th></th>
         </tr>
     </thead>
@@ -43,7 +44,10 @@
                 @Html.DisplayFor(modelItem => item.GenresModel.GenreName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.MovieID">Edit</a> |
+                @Html.ActionLink("Check Out","CheckOutMovie","RentalRecords",new{@id=item.MovieID},null)
+            </td>
+            <td>
+                Ï<a asp-action="Edit" asp-route-id="@item.MovieID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.MovieID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.MovieID">Delete</a>
             </td>

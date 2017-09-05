@@ -43,15 +43,43 @@ namespace video_rental.Controllers
             return View(rentalRecordsModel);
         }
 
-        // GET: RentalRecords/Create
+        // GET: Check out movie
+        public async Task<IActionResult> CheckOutMovie(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var moviesModel = await _context.Movies
+                .Include(m => m.GenresModel)
+                .SingleOrDefaultAsync(m => m.MovieID == id);
+            if (moviesModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(moviesModel);
+        }
+
+        // POST Check out movie
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> CheckOutMovie(int movieId, int customerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        //GET: RentalRecords/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: RentalRecords/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //POST: RentalRecords/Create
+        //To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RentalID,CustomerID,CustomerName,MovieID,MovieTitle,DueDate,IsOverdue")] RentalRecordsModel rentalRecordsModel)
@@ -64,6 +92,11 @@ namespace video_rental.Controllers
             }
             return View(rentalRecordsModel);
         }
+
+        // public async Task<IActionResult> CheckOutMovie()
+        // {
+
+        // }
 
         // GET: RentalRecords/Edit/5
         public async Task<IActionResult> Edit(int? id)

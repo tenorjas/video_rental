@@ -1,0 +1,53 @@
+@model video_rental.Models.MoviesModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Check out movie</h2>
+
+<div>
+    <h4>Check Out Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieTitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MovieTitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearReleased)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearReleased)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Director)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Director)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GenresModel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GenresModel.GenreName)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    @using (Html.BeginForm("Create", "RentalRecords"))
+    {
+        @Html.Hidden("MovieID")
+
+        // Turn this into a drop down showing all the customers
+        @Html.TextArea("CustomerID")
+
+        // Turn this into a date field
+        @Html.TextArea("DueDate")
+
+        <input type="submit" name="Save" value="Save" />
+    }
+</div>
